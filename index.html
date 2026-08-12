@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Raksha Bandhan, Behen!</title>
+    <title>Happy Raksha Bandhan, Anvita!</title>
+    <link href="https://googleapis.com" rel="stylesheet">
     <style>
-        /* Deep Night Sky Background with Gradient */
+        * {
+            box-sizing: border-box;
+        }
         body {
             margin: 0;
             padding: 0;
@@ -13,14 +16,27 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(135deg, #0b091a 0%, #161233 50%, #2c1654 100%);
-            font-family: 'Poppins', Arial, sans-serif;
+            background: radial-gradient(circle at 50% 50%, #1a103c 0%, #0d0826 60%, #050314 100%);
+            font-family: 'Poppins', sans-serif;
             overflow-x: hidden;
             color: #ffffff;
-            padding: 40px 0; /* Extra space for scrolling on mobile */
+            padding: 50px 0;
         }
 
-        /* Sparkle Stars in the Night Sky */
+        /* Ambient Glow in Background */
+        .bg-glow {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(147, 51, 234, 0.15) 0%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Sparkling Twinkling Stars */
         .stars {
             position: fixed;
             top: 0;
@@ -29,129 +45,213 @@
             height: 100%;
             pointer-events: none;
             background-image: 
-                radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
-                radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
-                radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px);
-            background-size: 550px 550px, 350px 350px, 250px 250px;
-            background-position: 0 0, 40px 60px, 130px 270px;
-            opacity: 0.6;
+                radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)),
+                radial-gradient(3px 3px at 50px 160px, #ddd, rgba(0,0,0,0));
+            background-size: 200px 200px;
+            animation: twinkle 4s infinite linear;
+            opacity: 0.5;
             z-index: 0;
         }
 
-        /* Main Greeting Card Container */
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 0.8; }
+        }
+
+        /* Luxury Card Container */
         .card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 217, 0, 0.4);
-            padding: 40px 30px;
-            border-radius: 20px;
+            background: rgba(18, 12, 38, 0.65);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 215, 0, 0.25);
+            padding: 45px 35px;
+            border-radius: 30px;
             text-align: center;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(255, 217, 0, 0.1);
-            max-width: 450px;
-            width: 90%;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 
+                        inset 0 0 30px rgba(255, 215, 0, 0.05),
+                        0 0 40px rgba(147, 51, 234, 0.2);
+            max-width: 480px;
+            width: 92%;
             z-index: 10;
-            animation: fadeIn 1.5s ease-out;
-            margin: auto;
+            animation: cardEntrance 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            position: relative;
         }
 
-        /* Photo Gallery Styling */
-        .photo-gallery {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin: 25px 0;
+        @keyframes cardEntrance {
+            from { opacity: 0; transform: translateY(40px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
         }
 
-        .sister-photo {
-            width: 100%;
-            max-height: 300px;
-            object-fit: cover; /* Keeps image looking clean, not stretched */
-            border-radius: 12px;
-            border: 3px solid rgba(255, 217, 0, 0.6);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            transition: transform 0.3s ease;
+        /* Premium Floral / Mandala Top Decor */
+        .mandala-decor {
+            font-size: 50px;
+            margin-bottom: -10px;
+            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+            animation: spinSlow 20s linear infinite;
+            display: inline-block;
         }
 
-        .sister-photo:hover {
-            transform: scale(1.03); /* Slight zoom on hover */
+        @keyframes spinSlow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
-        /* Festive Rakhi Image/Emoji Placeholder */
         .rakhi-icon {
-            font-size: 70px;
-            margin-bottom: 10px;
-            animation: pulse 2s infinite ease-in-out;
-            display: inline-block;
+            font-size: 55px;
+            margin-top: 10px;
+            display: block;
+            animation: pulseGlow 2.5s infinite ease-in-out;
         }
 
+        @keyframes pulseGlow {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.3)); }
+            50% { transform: scale(1.05); filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.6)); }
+        }
+
+        /* Metallic Gold Gradient Heading */
         h1 {
-            color: #ffd700;
-            font-size: 2.5rem;
-            margin: 10px 0;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+            background: linear-gradient(135deg, #ffe066 0%, #f5af19 50%, #e65c00 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 2.4rem;
+            font-weight: 600;
+            margin: 15px 0 30px 0;
+            letter-spacing: 1px;
         }
 
-        p {
-            font-size: 1.2rem;
-            line-height: 1.6;
-            color: #f0f0f0;
-            margin: 20px 0;
+        /* Creative Overlapping Polaroid Stack Grid */
+        .photo-stack {
+            position: relative;
+            height: 340px;
+            margin: 30px auto 40px auto;
+            max-width: 320px;
         }
 
-        .heart {
-            color: #ff4757;
-            animation: beat 0.5s infinite alternate;
-            display: inline-block;
+        .polaroid {
+            background: #ffffff;
+            padding: 12px 12px 25px 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            border-radius: 4px;
+            position: absolute;
+            width: 220px;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            cursor: pointer;
         }
 
-        /* Falling Flowers Styling */
-        .petal {
-            position: fixed; /* Fixed so flowers fall relative to screen, not card size */
-            background-color: #ffb7c5;
-            border-radius: 150% 0 150% 0;
-            pointer-events: none;
+        .polaroid img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 2px;
+        }
+
+        /* Dynamic stacked angles */
+        .pic1 {
+            left: 0;
+            top: 10px;
+            transform: rotate(-8deg);
+            z-index: 3;
+        }
+        .pic2 {
+            right: 0;
+            top: 25px;
+            transform: rotate(6deg);
+            z-index: 2;
+        }
+        .pic3 {
+            left: 40px;
+            top: 50px;
+            transform: rotate(-2deg);
             z-index: 1;
         }
 
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* Hover animation to pull picture to front */
+        .polaroid:hover {
+            transform: rotate(0deg) scale(1.1) translateY(-20px);
+            z-index: 10;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(255,217,0,0.4)); }
-            50% { transform: scale(1.08); filter: drop-shadow(0 0 20px rgba(255,217,0,0.8)); }
+        /* Elegant message box layout */
+        .message-box {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 25px;
+        }
+
+        .salutation {
+            font-family: 'Caveat', cursive;
+            font-size: 2.2rem;
+            color: #ffda79;
+            margin: 0 0 15px 0;
+            text-align: left;
+        }
+
+        p.letter-body {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #e2e8f0;
+            text-align: justify;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .valediction {
+            font-family: 'Caveat', cursive;
+            font-size: 1.9rem;
+            color: #ff793f;
+            text-align: right;
+            margin: 20px 0 0 0;
+        }
+
+        .heart {
+            color: #ff5252;
+            animation: beat 0.6s infinite alternate;
+            display: inline-block;
         }
 
         @keyframes beat {
-            to { transform: scale(1.2); }
+            to { transform: scale(1.25); }
+        }
+
+        /* Organic falling flower petals styling */
+        .petal {
+            position: fixed;
+            border-radius: 150% 0 150% 0;
+            pointer-events: none;
+            z-index: 5;
+            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.15));
         }
     </style>
 </head>
 <body>
 
+    <div class="bg-glow"></div>
     <div class="stars"></div>
 
     <div class="card">
-        <div class="rakhi-icon">🪮✨💝</div>
-        <h1>Happy Raksha Bandhan!</h1>
+        <div class="mandala-decor">💮</div>
+        <div class="rakhi-icon">💝✨🪮</div>
+        <h1>Happy Raksha Bandhan Anvita</h1>
         
-        <!-- Photo Gallery Container with 3 images -->
-        <div class="photo-gallery">
-            <!-- REPLACE THE LINKS BELOW WITH YOUR COPIED DIRECT LINKS -->
-            <img src="[url=https://postimg.cc/S2H44dMv][img]https://i.postimg.cc/S2H44dMv/Chat-GPT-Image-Aug-12-2026-10-11-10-PM.png[/img][/url]
-" alt="Memories 1" class="sister-photo" loading="eager">
-            <img src="[url=https://postimg.cc/gX1ppsZq][img]https://i.postimg.cc/gX1ppsZq/Chat-GPT-Image-Aug-12-2026-10-12-28-PM.png[/img][/url]" alt="Memories 2" class="sister-photo" loading="eager">
-            <img src="[url=https://postimg.cc/N9ZttDHb][img]https://i.postimg.cc/N9ZttDHb/Photo-Enhancement-Request-Google-Chrome-8-12-2026-10-09-17-PM.png[/img][/url]" alt="Memories 3" class="sister-photo" loading="eager">
+        <!-- Elegant Stacked Photo Collage -->
+        <div class="photo-stack">
+            <!-- PASTE YOUR 3 FAST LINKS INSIDE THE src="" QUOTATION MARKS BELOW -->
+            <div class="polaroid pic1"><img src="https://postimg.cc/S2H44dMv][img]https://i.postimg.cc/S2H44dMv/.png[/img][/url]" alt="Memory 1"></div>
+            <div class="polaroid pic2"><img src="https://postimg.cc/gX1ppsZq][img]https://i.postimg.cc/gX1ppsZq/.png[/img][/url] "></div>
+            <div class="polaroid pic3"><img src="https://postimg.cc/N9ZttDHb][img]https://i.postimg.cc/N9ZttDHb/.png[/img][/url]" alt="Memory 3"></div>
         </div>
 
-        <p>To my dearest, most amazing <b>Behen Anvita </b>,</p>
-        <p>Thank you for always scolding me, laughing with me, and being my best friend for life. This sky is full of stars, but you shine the brightest! ✨ </p>
-        <p>Thank you for always having my back, keeping my secrets, and believing in me even when I doubt myself. Wishing you all the happiness, success, and love in the world today and always. Have a wonderful Raksha Bandhan!</p>
-        <p>With love always, <br><span class="heart">❤️</span> Your Brother</p>
-
+        <!-- Premium Typography Layout -->
+        <div class="message-box">
+            <div class="salutation">To my dearest, most amazing Behen Anvita,</div>
+            
+            <p class="letter-body">Thank you for always scolding me, laughing with me, and being my best friend for life. This sky is full of stars, but you shine the brightest! ✨</p>
+            
+            <p class="letter-body">Thank you for always having my back, keeping my secrets, and believing in me even when I doubt myself. Wishing you all the happiness, success, and love in the world today and always. Have a wonderful Raksha Bandhan!</p>
+            
+            <div class="valediction">With love always,<br><span class="heart">❤️</span> Your Brother</div>
+        </div>
     </div>
 
     <script>
@@ -159,18 +259,19 @@
             const petal = document.createElement('div');
             petal.classList.add('petal');
             
-            const size = Math.random() * 15 + 10 + 'px';
+            const size = Math.random() * 12 + 10 + 'px';
             petal.style.width = size;
             petal.style.height = size;
             
             petal.style.left = Math.random() * window.innerWidth + 'px';
             petal.style.top = '-20px';
             
-            const colors = ['#ffb7c5', '#ff9a9e', '#fecfef', '#ff4b5c'];
+            // Premium rose petal pallet (soft shades of pink, rose gold, magenta)
+            const colors = ['#ffb7c5', '#ff9a9e', '#fecfef', '#ff4b5c', '#f1a7b4'];
             petal.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
             
-            const duration = Math.random() * 3 + 4 + 's';
-            const horizontalDrift = (Math.random() * 200 - 100) + 'px';
+            const duration = Math.random() * 4 + 4 + 's';
+            const horizontalDrift = (Math.random() * 240 - 120) + 'px';
             
             petal.style.animation = `fall ${duration} linear forwards`;
             
@@ -178,8 +279,9 @@
             style.innerHTML = `
                 @keyframes fall {
                     0% { transform: translateY(0) rotate(0deg); opacity: 0; }
-                    10% { opacity: 0.9; }
-                    100% { transform: translateY(${window.innerHeight + 50}px) translateX(${horizontalDrift}) rotate(${Math.random() * 360}deg); opacity: 0; }
+                    15% { opacity: 0.85; }
+                    90% { opacity: 0.85; }
+                    100% { transform: translateY(${window.innerHeight + 50}px) translateX(${horizontalDrift}) rotate(${Math.random() * 540}deg); opacity: 0; }
                 }
             `;
             document.head.appendChild(style);
@@ -192,11 +294,4 @@
         }
 
         window.addEventListener('DOMContentLoaded', () => {
-            for(let i = 0; i < 30; i++) {
-                setTimeout(createPetal, Math.random() * 1000);
-            }
-            setInterval(createPetal, 150);
-        });
-    </script>
-</body>
-</html>
+
