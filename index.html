@@ -123,52 +123,58 @@
         /* Creative Overlapping Polaroid Stack Grid */
         .photo-stack {
             position: relative;
-            height: 340px;
+            height: 420px;
             margin: 30px auto 40px auto;
-            max-width: 320px;
+            max-width: 340px;
         }
 
         .polaroid {
             background: #ffffff;
-            padding: 12px 12px 25px 12px;
+            padding: 10px 10px 22px 10px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.4);
             border-radius: 4px;
             position: absolute;
-            width: 220px;
+            width: 200px;
             transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             cursor: pointer;
         }
 
         .polaroid img {
             width: 100%;
-            height: 180px;
+            height: 160px;
             object-fit: cover;
             border-radius: 2px;
         }
 
-        /* Dynamic stacked angles */
+        /* Overlapping angled layouts for your 4 photos */
         .pic1 {
-            left: 0;
+            left: -10px;
             top: 10px;
-            transform: rotate(-8deg);
-            z-index: 3;
+            transform: rotate(-10deg);
+            z-index: 4;
         }
         .pic2 {
-            right: 0;
-            top: 25px;
-            transform: rotate(6deg);
-            z-index: 2;
+            right: -10px;
+            top: 30px;
+            transform: rotate(8deg);
+            z-index: 3;
         }
         .pic3 {
-            left: 40px;
-            top: 50px;
-            transform: rotate(-2deg);
+            left: 15px;
+            top: 150px;
+            transform: rotate(-4deg);
+            z-index: 2;
+        }
+        .pic4 {
+            right: 10px;
+            top: 180px;
+            transform: rotate(6deg);
             z-index: 1;
         }
 
-        /* Hover animation to pull picture to front */
-        .polaroid:hover {
-            transform: rotate(0deg) scale(1.1) translateY(-20px);
+        /* Interactive pop forward on hover/touch */
+        .polaroid:hover, .polaroid:active {
+            transform: rotate(0deg) scale(1.15) translateY(-15px);
             z-index: 10;
             box-shadow: 0 15px 35px rgba(0,0,0,0.6);
         }
@@ -234,11 +240,12 @@
         <div class="rakhi-icon">💝✨🪮</div>
         <h1>Happy Raksha Bandhan</h1>
         
-        <!-- Elegant Stacked Photo Collage -->
+        <!-- Elegant Stacked Photo Collage with your 4 absolute links -->
         <div class="photo-stack">
-            <div class="polaroid pic1"><img src="https://postimg.cc" alt="Memory 1"></div>
-            <div class="polaroid pic2"><img src="https://postimg.cc" alt="Memory 2"></div>
-            <div class="polaroid pic3"><img src="https://postimg.cc" alt="Memory 3"></div>
+            <div class="polaroid pic1"><img src="https://i.postimg.cc/dtf2yNTb/Chat-GPT-Image-Aug-12-2026-10-12-28-PM.png" alt="Memory 1"></div>
+            <div class="polaroid pic2"><img src="https://i.postimg.cc/fR3vqQN4/761113080-2235271270650452-462034294848832-n.jpg" alt="Memory 2"></div>
+            <div class="polaroid pic3"><img src="https://i.postimg.cc/SNGs0nmg/762388153-1692732762021797-4457033618787663920-n.jpg" alt="Memory 3"></div>
+            <div class="polaroid pic4"><img src="https://i.postimg.cc/jSyHf1kk/Photo-Enhancement-Request-Google-Chrome-8-12-2026-10-09-17-PM.png" alt="Memory 4"></div>
         </div>
 
         <!-- Premium Typography Layout -->
@@ -279,17 +286,3 @@
                     0% { transform: translateY(0) rotate(0deg); opacity: 0; }
                     15% { opacity: 0.85; }
                     90% { opacity: 0.85; }
-                    100% { transform: translateY(${window.innerHeight + 50}px) translateX(${horizontalDrift}) rotate(${Math.random() * 540}deg); opacity: 0; }
-                }
-            `;
-            document.head.appendChild(style);
-            document.body.appendChild(petal);
-
-            setTimeout(() => {
-                petal.remove();
-                style.remove();
-            }, parseFloat(duration) * 1000);
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            for(let i = 0; i < 35; i++) {
